@@ -1,7 +1,7 @@
 # Vue 시작하기
 
 Vue dev tools 추가 - 크롬 웹스토어, firefox
-
+Visual Studio Code Vetur extension 설치
 
 
 설치방법
