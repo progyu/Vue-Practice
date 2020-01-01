@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>좋아요 버튼</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- v-if와 v-else는 형제 태그이면서 인접해야 한다. -->
+    <div v-if="liked">좋아요 눌렀음</div>
+    <button v-else v-on:click="onClickButton">Like</button>
+  </div>
+</body>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      liked: false,
+    },
+    methods: {
+      onClickButton() {
+        this.liked = true;
+      },
+    },
+  })
+</script>
+</html>
