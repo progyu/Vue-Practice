@@ -1,4 +1,5 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -13,10 +14,11 @@ module.exports = {
   module: {
     rules: [{
       test: /\.vue$/,
-      loader: 'vue-loader',
+      exclude: /node_modules/,
+      use: 'vue-loader',
     }, {
       test: /\.css$/,
-      loader: [
+      use: [
         'vue-style-loader',
         'css-loader',
       ]
@@ -24,13 +26,12 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      template: './ResponseCheck.html'
+    }),
   ],
   output: {
+    path: path.join(__dirname, '/dist'),
     filename: '[name].js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/dist',
-  },
-  devServer: {
-    port: 9000
   },
 };
