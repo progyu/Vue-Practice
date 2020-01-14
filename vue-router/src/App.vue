@@ -29,7 +29,7 @@
       <v-toolbar-title>Application</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      
+      <router-view></router-view>
     </v-content>
     <v-footer color="indigo" app>
       <span class="white--text">&copy; 2017</span>
