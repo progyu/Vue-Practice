@@ -21,7 +21,17 @@
           <v-list-tile-content>
             <v-list-tile-title>About</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile> <v-list-tile @click="$router.push({ path: '/users'})">
+        </v-list-tile>
+        <v-list-tile router :to="{
+          name: 'users',
+          params: {
+            userId: 4321
+          },
+          query: {
+            name: 'lee',
+            address: 'seoul'
+          }
+        }">
           <v-list-tile-action>
             <i class="fas fa-user"></i>
           </v-list-tile-action>
