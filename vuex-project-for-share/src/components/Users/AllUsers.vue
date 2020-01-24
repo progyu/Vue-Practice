@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>All Users({{ allUsersCount }})</h1>
-    <h2>Seoul Users: {{ countOfSeoulUsers }}</h2>
-    <h2>Percentage of Seoul Users: {{ percentOfSeoulUsers }}%</h2>
+    <h1>All Users({{ count }})</h1>
+    <h2>Seoul Users: {{ seouls }}</h2>
+    <h2>Percentage of Seoul Users: {{ percent }}%</h2>
     <v-list two-line>
       <v-list-tile
-        v-for="(user, index) in $store.state.allUsers"
+        v-for="(user, index) in allUsers"
         :key="index"
         avatar
       >
@@ -25,14 +25,20 @@
 
 <script>
 import { EventBus } from '@/main.js'
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
   export default {
     data() {
       return {
       }
     },
     computed: {
-      ...mapGetters(['allUsersCount', 'countOfSeoulUsers', 'percentOfSeoulUsers'])
+      ...mapGetters({
+        count: 'allUsersCount',
+        seouls: 'countOfSeoulUsers',
+        percent: 'percentOfSeoulUsers'
+      }),
+      ...mapState(['allUsers'])
+      // ...mapGetters(['allUsersCount', 'countOfSeoulUsers', 'percentOfSeoulUsers'])
     },
     mounted() {
       EventBus.$on('signUp', users => {
